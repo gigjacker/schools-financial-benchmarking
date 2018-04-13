@@ -230,7 +230,9 @@ namespace SFB.Web.UI.Models
 
         public string PercentageOfPupilsWithSen => GetString(DBFieldNames.PERCENTAGE_OF_PUPILS_WITH_SEN);
 
-        public string PercentageOfPupilsWithoutSen => GetString(DBFieldNames.PERCENTAGE_OF_PUPILS_WITHOUT_SEN);
+        //HACK
+        public string PercentageOfPupilsWithoutSen => this.FinancialType == SchoolFinancialType.Maintained ? GetString("% of SEN pupils without Statement") : GetString(DBFieldNames.PERCENTAGE_OF_PUPILS_WITHOUT_SEN);
+        //HACK
 
         public string PercentageOfPupilsWithEal => GetString(DBFieldNames.PERCENTAGE_OF_PUPILS_WITH_EAL);
 

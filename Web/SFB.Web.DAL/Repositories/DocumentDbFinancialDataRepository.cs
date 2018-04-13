@@ -248,6 +248,13 @@ namespace SFB.Web.DAL.Repositories
 
             IQueryable<Document> result;
 
+            //HACK
+            if (type == "Maintained")
+            {
+                query = query.Replace("% of pupils without SEN Statement", "% of SEN pupils without statement");
+            }
+            //HACK
+
             if (type == "Academies")
             {
                 result = _client.CreateDocumentQuery<Document>(
@@ -281,6 +288,13 @@ namespace SFB.Web.DAL.Repositories
             {
                 return new List<int> { 0 };
             }
+
+            //HACK
+            if (type == "Maintained")
+            {
+                query = query.Replace("% of pupils without SEN Statement", "% of SEN pupils without Statement");
+            }
+            //HACK
 
             var result =
                 _client.CreateDocumentQuery<int>(UriFactory.CreateDocumentCollectionUri(DatabaseId, collectionName),
